@@ -58,8 +58,8 @@ Vr = V(:, 1:r);
 Atilde = Ur'*X2*Vr*Sr^(-1);
 
 % STEP 3: eigen decompostion
-% W: eigen values
-% D: eigen vectors
+% W: eigen vectors
+% D: eigen values
 [W, D] = eig(Atilde);
 
 % STEP 4: real space DMD mode
@@ -121,4 +121,4 @@ xlabel('spatial-axis'); ylabel('temporal-axis'); title('DMD prediction of f(x, t
 format long e;
 disp(omega);    % eigen values exist on the imaginary part.
 disp('real part: numerical round off');
-disp('imag part: singular values');
+disp('imag part: eigen values');
