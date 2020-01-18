@@ -45,7 +45,7 @@ X = f.';    % in C^(spatio, temporal)
 X1 = X(:, 1:end-1);
 X2 = X(:, 2:end);
 
-% STEP 1: singular value decomposition (SVD)
+%% STEP 1: singular value decomposition (SVD)
 r = 2;      % rank-r truncation
 [U, S, V] = svd(X1, 'econ');
 
@@ -53,30 +53,30 @@ Ur = U(:, 1:r);
 Sr = S(1:r, 1:r);
 Vr = V(:, 1:r);
 
-% STEP 2: low-rank subspace matrix 
-%         (similary transfrom, least-square fit matrix, low-rank subspace matrix)
+%% STEP 2: low-rank subspace matrix 
+%         (similarity transform, least-square fit matrix, low-rank subspace matrix)
 Atilde = Ur'*X2*Vr*Sr^(-1);
 
-% STEP 3: eigen decompostion
+%% STEP 3: eigen decomposition
 % W: eigen vectors
 % D: eigen values
 [W, D] = eig(Atilde);
 
-% STEP 4: real space DMD mode
+%% STEP 4: real space DMD mode
 Phi = X2*Vr*Sr^(-1)*W;   % DMD modes
 
 lamdba = diag(D);       % eigen value
 omega = log(lamdba)/dt; % log of eigen value
 
 figure(4); 
-plot(real(u(:, 1:3))); hold on; 
-plot(real(Phi)); hold off;
-legend('1st mode of svd', ...
-        '2nd mode of svd', ...
-        '1st mode of dmd', ...
-        '2nd mode of dmd'); 
+subplot(2,1,1); plot(real(u(:, 1:2)));
+legend('1st mode of SVD', ...
+        '2nd mode of SVD'); 
+subplot(2,1,2); plot(real(Phi));
+legend('1st mode of DMD', ...
+        '2nd mode of DMD'); 
 
-% STEP 5: reconstruct the signal
+%% STEP 5: reconstruct the signal
 x1 = X(:, 1);       % time = 0
 b = pinv(Phi)*x1;   % initial value; \: pseudo inverse
 
@@ -86,12 +86,15 @@ for i = 1:length(t)
    t_dyn(:, i) = (b.*exp(omega*t(i))); 
 end
 
-X_dmd = Phi*t_dyn;
+f_dmd = Phi*t_dyn;
 
 figure(1);
-subplot(2,2,4); surfl(xgrid, tgrid, real(X_dmd).');  shading interp; colormap gray; title('reconstruction of f(x, t) by DMD');
+subplot(2,2,1); surfl(xgrid, tgrid, real(f1));  shading interp; colormap gray;  title('f1(x, t)');
+subplot(2,2,2); surfl(xgrid, tgrid, real(f2));  shading interp; colormap gray;  title('f2(x, t)');
+subplot(2,2,3); surfl(xgrid, tgrid, real(f));  shading interp; colormap gray; title('f(x, t) = f1(x, t) + f2(x, t)');
+subplot(2,2,4); surfl(xgrid, tgrid, real(f_dmd).');  shading interp; colormap gray; title('reconstruction of f(x, t) by DMD');
 
-%% addtional informations
+%% additional informations
 % predict furture state using time dynamics
 t_ext = linspace(0, 8*pi, 400);
 
@@ -103,14 +106,14 @@ for i = 1:length(t_ext)
    t_ext_dyn(:, i) = (b.*exp(omega*t_ext(i))); 
 end
 
-X_dmd_ext = Phi*t_ext_dyn;
+f_dmd_ext = Phi*t_ext_dyn;
 
 figure(4);
 subplot(2,2,1); surfl(xgrid, tgrid, real(f));  shading interp; colormap gray; 
 xlabel('spatial-axis'); ylabel('temporal-axis'); title('f(x, t) during t = [0, 4*pi]');
-subplot(2,2,2); surfl(xgrid, tgrid, real(X_dmd).');  shading interp; colormap gray; 
+subplot(2,2,2); surfl(xgrid, tgrid, real(f_dmd).');  shading interp; colormap gray; 
 xlabel('spatial-axis'); ylabel('temporal-axis'); title('DMD reconstruction of f(x, t) during t = [0, 4*pi]');
-subplot(2,2,[3,4]); surfl(xgrid_ext, tgrid_ext, real(X_dmd_ext).');  shading interp; colormap gray; 
+subplot(2,2,[3,4]); surfl(xgrid_ext, tgrid_ext, real(f_dmd_ext).');  shading interp; colormap gray; 
 xlabel('spatial-axis'); ylabel('temporal-axis'); title('DMD prediction of f(x, t) during t = [0, 8*pi]');
 
 % If eigen value: lambda or omega has tiny real part > 0,
