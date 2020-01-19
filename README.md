@@ -189,7 +189,7 @@ where $W=[\rm{eigen~vectors}]$ and $\Lambda=[\rm{eigen~values}]$.
 
 ### 4. Look back up high-dimensional space from low-dimensional space
 
- In the previous step, the eigen vectors $W$ are calculated in the low-dimensional subspace, but not an original high-dimensional space. The eigen vectors $W$ can be returned to the original space by calculating:
+ In the previous step, the eigen vectors $W$ are calculated in the low-dimensional subspace, but not an original high-dimensional space. The eigen vectors $W$ can be returned to the original space by calculating below:
 
  $$\Phi = \bar{X}' V_r \Sigma_r^{-1} W,$$
 
