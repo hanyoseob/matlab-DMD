@@ -202,13 +202,13 @@ where $W=[\rm{eigen~vectors}]$ and $\Lambda=[\rm{eigen~values}]$.
  We have performed from defining the linear dynamical system $A$ to calculating the eigen vectors $\Phi$ and the eigen values $\Lambda$.
 Using the eigen vectors $\Phi$ and the eigen values $\Lambda$, the solution $\rm{x}$ can be calculated as:
 
-$$\rm{x}(t) = \Phi e ^{\Omega t} b = \sum_{k=1}^{r} \phi_k e^{\omega_k t}b_k,$$
+$$\rm{x}(t) = \Phi e ^{\Omega t} \rm{b} = \sum_{k=1}^{r} \phi_k e^{\omega_k t}b_k,$$
 
-where $\Omega=\log{\Lambda}}$ and $\rm{b}$ is arbitrary constants.
+where $\Omega = \log{\Lambda}$ and $\rm{b}$ is arbitrary constants.
 
 The arbitrary constants $\rm{b}$ can be decide to solve using initial condition problem:
 
-$$\rm{x}(0) = \Phi b,$$
+$$\rm{x}(0) = \Phi \rm{b},$$
 
 then,
 
