@@ -204,7 +204,7 @@ Using the eigen vectors $\Phi$ and the eigen values $\Lambda$, the solution $\rm
 
 $$\rm{x}(t) = \Phi e ^{\Omega t} b = \sum_{k=1}^{r} \phi_k e^{\omega_k t}b_k,$$
 
-where $\rm{b}$ is arbitrary constants.
+where $\Omega=\log{\Lambda}}$ and $\rm{b}$ is arbitrary constants.
 
 The arbitrary constants $\rm{b}$ can be decide to solve using initial condition problem:
 
