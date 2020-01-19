@@ -39,7 +39,7 @@ When the linear dynamical system $A$ is formulated as `differential equation`:
 
 $$\frac{d\vec{\mathbf{x}}}{dt} = A \vec{\mathbf{x}},~~~~~~~~~~x \in \mathbb{R}^n,~~~n \gg 1,$$
 
-the differention equation with the linear dynamical system $A$ can be easily solved, then its general solution is `exponential solution` defined as:
+the differential equation with the linear dynamical system $A$ can be easily solved, then its general solution is `exponential solution` defined as:
 
 $$\vec{\mathbf{x}}=\vec{\mathbf{v}}e^{\lambda t}$$
 
@@ -61,11 +61,11 @@ An exact solution of the differential equation is represented as:
 
 $$\vec{\mathbf{x}} = \sum_{j=1}^{n}{b_j \phi_j e^{\lambda_{j}t}}.$$
 
-Finally, the exact solution of the original dynamic system $f$ is fomurated by the above expression, which preserve the time dynamic of $t$.
+Finally, the exact solution of the original dynamic system $f$ is formulated by the above expression, which preserve the time dynamic of $t$.
 
 ---
 
-Now, we know that how can express the exact solution $\vec{\mathbf{x}}$ from the linear dynamical system $A$. However, we DO NOT know that how can express the linear dynamical system $A$. In here, we will show that how can the expersssion is driven.
+Now, we know that how can express the exact solution $\vec{\mathbf{x}}$ from the linear dynamical system $A$. However, we DO NOT know that how can express the linear dynamical system $A$. In here, we will show that how can the expression is driven.
 
 Let we can measure $\rm{x}_j = \vec{\mathbf{x}}(t_j)$ at any time point of $j$.
 We make big matrix concatenating the data from $1^{st}$ snapshot to $(m-1)^{th}$ snapshot.
@@ -159,11 +159,11 @@ Since $\bar{X}$ was decomposed by SVD, the pseudo-inverse can be easily calculat
 
 $$\bar{X}^{\dagger} = V_r \Sigma_r^{-1} U_r^*.$$
 
-Then, the linear dynamical system $A_{n \times n}$ can be refomulated by feeding the pseudo-inverse $\bar{X}^{\dagger}$:
+Then, the linear dynamical system $A_{n \times n}$ can be reformulated by feeding the pseudo-inverse $\bar{X}^{\dagger}$:
 
 $$A_{n \times n} = \bar{X}' V_r \Sigma_r^{-1} U_r^*.$$
 
-Althoug the linear dynamical system $A_{n \times n}$ was calculated, still the linear dynamical system $A_{n \times n}$ is too huge.
+Although the linear dynamical system $A_{n \times n}$ was calculated, still the linear dynamical system $A_{n \times n}$ is too huge.
 
 To project the linear dynamical system $A_{n \times n}$ into low-rank subspace, the similarity transform is performed:
 
