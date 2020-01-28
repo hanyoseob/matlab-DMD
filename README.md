@@ -29,7 +29,7 @@ $$\frac{d\vec{\mathbf{x}}}{dt} = f(\vec{\mathbf{x}}, t, \mu),$$
 
 where $\vec{\mathbf{x}}$ defines a measurements, $t$ is a time, $\mu$ is a parametrical dependence, and $f$ indicates a system. Since the system $f$ is too complex and/or combined as well as nonlinear, it is not clear the system $f$ what is. In other words, we do not the system $f$. A lot of data $\vec{\mathbf{x}}$ is measured from the system $f$ although the system $f$ is not clear, the complex dynamical system $f$ can be approximated as follows:
 
-$$ \frac{d\vec{\mathbf{x}}}{dt} = A\vec{\mathbf{x}}$$ 
+$$ \frac{d\vec{\mathbf{x}}}{dt} \approx A\vec{\mathbf{x}}$$ 
 
 where $A$ defines a linear dynamical system which is a low-rank structure.
 
