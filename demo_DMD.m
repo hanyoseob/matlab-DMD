@@ -1,4 +1,4 @@
-clear all;
+clear;
 close all;
 clc;
 
@@ -19,14 +19,9 @@ f = f1 + f2;
 
 %% plot
 figure(1);
-subplot(2,2,1); surfl(xgrid, tgrid, real(f1));  shading interp; colormap gray;  title('f1(x, t)');
-subplot(2,2,2); surfl(xgrid, tgrid, real(f2));  shading interp; colormap gray;  title('f2(x, t)');
-subplot(2,2,3); surfl(xgrid, tgrid, real(f));  shading interp; colormap gray; title('f(x, t) = f1(x, t) + f2(x, t)');
-
-figure(2);
 plot(diag(s) / sum(diag(s)), 'ro'); title('SVD: low rank property (rank = 2, two modes)');
 
-figure(3);
+figure(2);
 subplot(2,1,1); plot(real(u(:, 1:3))); 
 legend('1st mode of basis u (left singular vectors)', ...
         '2nd mode of basis u (left singular vectors)', ...
@@ -68,7 +63,7 @@ Phi = X2*Vr*Sr^(-1)*W;   % DMD modes
 lamdba = diag(D);       % eigen value
 omega = log(lamdba)/dt; % log of eigen value
 
-figure(4); 
+figure(3); 
 subplot(2,1,1); plot(real(u(:, 1:2)));
 legend('1st mode of SVD', ...
         '2nd mode of SVD'); 
@@ -88,7 +83,7 @@ end
 
 f_dmd = Phi*t_dyn;
 
-figure(1);
+figure(4);
 subplot(2,2,1); surfl(xgrid, tgrid, real(f1));  shading interp; colormap gray;  title('f1(x, t)');
 subplot(2,2,2); surfl(xgrid, tgrid, real(f2));  shading interp; colormap gray;  title('f2(x, t)');
 subplot(2,2,3); surfl(xgrid, tgrid, real(f));  shading interp; colormap gray; title('f(x, t) = f1(x, t) + f2(x, t)');
@@ -108,7 +103,7 @@ end
 
 f_dmd_ext = Phi*t_ext_dyn;
 
-figure(4);
+figure(5);
 subplot(2,2,1); surfl(xgrid, tgrid, real(f));  shading interp; colormap gray; 
 xlabel('spatial-axis'); ylabel('temporal-axis'); title('f(x, t) during t = [0, 4*pi]');
 subplot(2,2,2); surfl(xgrid, tgrid, real(f_dmd).');  shading interp; colormap gray; 
